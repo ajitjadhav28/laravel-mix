@@ -178,8 +178,12 @@ class CssWebpackConfig extends Component {
     webpackPlugins() {
         return [
             new MiniCssExtractPlugin({
-                filename: '[name].css',
-                chunkFilename: '[name].css'
+                filename: (pathData, assetInfo) => {
+                    const chnknm_arr = pathData.chunk.name.split('/');
+                    const name = chnknm_arr[chnknm_arr.length - 1];
+                    return `css/${name}.css`;
+                },
+                chunkFilename: 'css/[name].css'
             })
         ];
     }
