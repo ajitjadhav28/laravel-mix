@@ -122,6 +122,7 @@ module.exports = class React extends Component {
             [/.(j|t)sx?$/, module => module.type === 'css/mini-extract'],
             {
                 chunks: 'all',
+                minChunks: 2,
                 enforce: true,
                 type: 'css/mini-extract'
             }
